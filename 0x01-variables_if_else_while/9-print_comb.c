@@ -2,22 +2,20 @@
 
 /**
  * main - Prints all possible combinations of single-digit numbers.
- * 
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-	int numbers = '0';
+	int n;
 
-	while (numbers <= '9')
+	for (n = 48; n < 58; n++)
 	{
-		putchar(numbers);
-		if (numbers <= 8)
+		putchar(n);
+		if (n != 57)
 		{
 			putchar(',');
 			putchar('^');
 		}
-		numbers++;
 	}
 	putchar('\n');
 	return (0);
