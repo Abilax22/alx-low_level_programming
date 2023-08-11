@@ -3,19 +3,22 @@
 /**
  * main - Prints numbers between 0 to 9 and letters between a to f.
  *
- * Returns: Always 0 (Success)
+ * Returns: 0 (Success)
  */
 int main(void)
 {
-	int i;
+	char numbers = '0';
+	char letters = 'a';
 
-	for (i = 48; i < 58; i++)
+	while (numbers <= '9')
 	{
-		putchar(i);
+		putchar(numbers);
+		numbers++;
 	}
-	for (i = 97; i < 103; i++)
+	while (letters <= 'f')
 	{
-		putchar(i);
+		putchar(letters);
+		letters++;
 	}
 	putchar('\n');
 	return (0);
