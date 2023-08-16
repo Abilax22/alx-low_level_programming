@@ -8,15 +8,15 @@
 void positive_or_negative(int i)
 {
 if (i < 0)
-printf("$s\n", i, "negative");
+printf("$s $s\n", i, "negative");
 }
 else if (i > 0)
 {
-printf("$s\n", i, "positive");
+printf("$s $s\n", i, "positive");
 }
 else
 {
-printf("$s\n", i, "zero");
+printf("$s $s\n", i, "zero");
 }
 return (0);
 }
