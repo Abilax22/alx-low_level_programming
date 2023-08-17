@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * main - Determine if a number is positive, negative or zero.
  * 0 : is the number to be checked
@@ -7,16 +8,12 @@
 
 void positive_or_negative(int i)
 {
-if (i < 0)
-printf("$s $s\n", i, "negative");
-}
-else if (i > 0)
+if (i > 0)
 {
-printf("$s $s\n", i, "positive");
+printf("%dd is positive\n", i);
 }
+else if (i == 0)
+printf("%d is zero\n", i);
 else
-{
-printf("$s $s\n", i, "zero");
-}
-return (0);
+printf("%d is negative\n", i);
 }
