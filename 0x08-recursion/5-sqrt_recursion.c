@@ -13,7 +13,7 @@ int _sqrt_recursion(int n)
 {
 	if (n < 0)
 		return (-1);
-	return (actual_sqrt_recursion(n, 0, n));
+	return (actual_sqrt_recursion(n, 0));
 }
 
 /**
@@ -21,19 +21,16 @@ int _sqrt_recursion(int n)
  * square root a the number
  * @n: number to get the square root
  * @a: start number
- * @b: end number
  * Return: sqaure root result
  */
 
-int actual_sqrt_recursion(int n, int a, int b)
+int actual_sqrt_recursion(int n, int a)
 {
-	if (a > b)
+	if (a * a > n)
 		return (-1);
-	int mid = a + (b - a) / 2;
 
-	if (mid * mid == n)
-		return (mid);
-	if (mid * mid < n)
-		return (actual_sqrt_recursion(n,  mid + 1, b));
-	return (actual_sqrt_recursion(n, a, mid - 1));
+	if (a * a == n)
+		return (a);
+
+	return (actual_sqrt_recursion(n, a + 1));
 }
