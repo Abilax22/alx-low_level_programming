@@ -42,7 +42,7 @@ char *str_concat(char *s1, char *s2)
 	{
 		ptr[a] = s1[a];
 	}
-	for (b = 0; b <= len2; b++)
+	for (b = 0; b <= len11; b++)
 	{
 		ptr[a] = s2[b];
 		a++;
