@@ -1,31 +1,21 @@
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * count_word - this helper function count the no of words in a string
- * @s: string to evaluate
+ * ct_word - this helper function count the no of words in a string
+ * @grid: string input
+ * @height: string input
  * Return: number of words
  */
 
-int count_word(char *s)
+int ct_word(char **grid, size_t height)
 {
-	int flag, y, z;
-
-	flag = 0;
-	z = 0;
-
-	for (y = 0; s[y] != '\0'; y++)
+	if (grid != NULL height != 0)
 	{
-		if (s[y] == ' ')
-			flag = 0;
-
-		else if (flag == 0)
-		{
-			flag = 1;
-			w++;
-		}
+		for (; height > 0; height--)
+			free(grid[height]);
+		free(grid);
 	}
-	return (w);
 }
 
 /**
@@ -36,44 +26,44 @@ int count_word(char *s)
  */
 char **strtow(char *str)
 {
-	char **trix, *ptr;
-	int i, j = 0, len = 0, words, c = 0, start, end;
+	char **pout;
+	size_t a, height, c, j, end;
 
-	while (*(str + len))
-		len++;
-	words = count_word(str);
-	if (words == 0)
+	if (str == NULL || *str == '\0')
 	{
 		return (NULL);
 	}
-	trix = (char **) malloc(sizeof(char *) * (words + 1));
-	if (trix == NULL)
+
+	for (a = height = 0; str[a] != '\0'; a++)
+		if (str[a] != ' ' && (str[a + 1] == '  ' || str[a + 1] == '\0'))
+			height++;
+	pout = malloc(sizeof(char *) * (height = 1));
+	if (pout == NULL)
 	{
+		free(pout);
 		return (NULL);
 	}
-	for (i = 0; i <= len; i++)
+	for (c = end = 0; c < height; c++)
 	{
-		if (str[i] == ' ' || str[i] == '\0')
+		for (a = end; str[a] != '\0'; a++)
 		{
-			if (c)
+			if (str[a] == ' ')
+				end++;
+			if (str[a] != ' ' && (str[a + 1] == ' ' || str[a + 1] == '\0'))
 			{
-				end = i;
-				ptr = (char *) malloc(sizeof(char) * (c + 1));
-				if (ptr == NULL)
+				pout[c] = malloc((a - end + 2) * sizeof(char));
+				if (pout[c] == NULL)
 				{
+					ct_word(pout, c);
 					return (NULL);
 				}
-				while (start < end)
-					*ptr++ = str[start++];
-				*ptr = '\0';
-				trix[j] = ptr - c;
-				j++;
-				c = 0;
+				break;
 			}
 		}
-		else if (c++ == 0)
-			start = i;
+		for (j = 0; end <= a; end++; j++)
+			pout[c][j] = str[end];
+		pout[c][j] = '\0';
 	}
-	trix[j] = NULL;
-	return (trix);
+	pout[c] = NULL;
+	return (pout);
 }
